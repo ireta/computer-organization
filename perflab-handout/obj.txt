@@ -1,0 +1,338 @@
+
+kernels.o:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 <naive_conv>:
+   0:	f3 0f 1e fb          	endbr32 
+   4:	e8 fc ff ff ff       	call   5 <naive_conv+0x5>
+   9:	05 01 00 00 00       	add    $0x1,%eax
+   e:	55                   	push   %ebp
+   f:	57                   	push   %edi
+  10:	56                   	push   %esi
+  11:	53                   	push   %ebx
+  12:	83 ec 3c             	sub    $0x3c,%esp
+  15:	83 7c 24 50 07       	cmpl   $0x7,0x50(%esp)
+  1a:	89 44 24 24          	mov    %eax,0x24(%esp)
+  1e:	0f 8e 1f 02 00 00    	jle    243 <naive_conv+0x243>
+  24:	8b 44 24 50          	mov    0x50(%esp),%eax
+  28:	c7 44 24 20 00 00 00 	movl   $0x0,0x20(%esp)
+  2f:	00 
+  30:	c7 44 24 1c 00 00 00 	movl   $0x0,0x1c(%esp)
+  37:	00 
+  38:	c1 e0 02             	shl    $0x2,%eax
+  3b:	89 44 24 28          	mov    %eax,0x28(%esp)
+  3f:	8b 44 24 5c          	mov    0x5c(%esp),%eax
+  43:	89 44 24 14          	mov    %eax,0x14(%esp)
+  47:	8b 44 24 50          	mov    0x50(%esp),%eax
+  4b:	83 e8 07             	sub    $0x7,%eax
+  4e:	89 44 24 18          	mov    %eax,0x18(%esp)
+  52:	c1 e0 02             	shl    $0x2,%eax
+  55:	89 44 24 2c          	mov    %eax,0x2c(%esp)
+  59:	8b 44 24 50          	mov    0x50(%esp),%eax
+  5d:	8d 04 40             	lea    (%eax,%eax,2),%eax
+  60:	01 c0                	add    %eax,%eax
+  62:	89 44 24 08          	mov    %eax,0x8(%esp)
+  66:	8b 44 24 58          	mov    0x58(%esp),%eax
+  6a:	8d b8 80 01 00 00    	lea    0x180(%eax),%edi
+  70:	83 ec 04             	sub    $0x4,%esp
+  73:	ff 74 24 30          	pushl  0x30(%esp)
+  77:	6a 00                	push   $0x0
+  79:	ff 74 24 20          	pushl  0x20(%esp)
+  7d:	8b 5c 24 34          	mov    0x34(%esp),%ebx
+  81:	e8 fc ff ff ff       	call   82 <naive_conv+0x82>
+  86:	8b 44 24 30          	mov    0x30(%esp),%eax
+  8a:	8b 74 24 64          	mov    0x64(%esp),%esi
+  8e:	8d 04 40             	lea    (%eax,%eax,2),%eax
+  91:	8d 04 46             	lea    (%esi,%eax,2),%eax
+  94:	89 44 24 20          	mov    %eax,0x20(%esp)
+  98:	83 c4 10             	add    $0x10,%esp
+  9b:	c7 44 24 0c 00 00 00 	movl   $0x0,0xc(%esp)
+  a2:	00 
+  a3:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+  a7:	90                   	nop
+  a8:	83 44 24 0c 01       	addl   $0x1,0xc(%esp)
+  ad:	8b 44 24 58          	mov    0x58(%esp),%eax
+  b1:	31 f6                	xor    %esi,%esi
+  b3:	8b 54 24 10          	mov    0x10(%esp),%edx
+  b7:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+  be:	66 90                	xchg   %ax,%ax
+  c0:	0f b7 08             	movzwl (%eax),%ecx
+  c3:	0f b7 1a             	movzwl (%edx),%ebx
+  c6:	0f b7 6a 02          	movzwl 0x2(%edx),%ebp
+  ca:	0f af d9             	imul   %ecx,%ebx
+  cd:	0f b7 48 02          	movzwl 0x2(%eax),%ecx
+  d1:	0f af cd             	imul   %ebp,%ecx
+  d4:	0f b7 68 04          	movzwl 0x4(%eax),%ebp
+  d8:	01 d9                	add    %ebx,%ecx
+  da:	0f b7 5a 04          	movzwl 0x4(%edx),%ebx
+  de:	0f af eb             	imul   %ebx,%ebp
+  e1:	0f b7 58 06          	movzwl 0x6(%eax),%ebx
+  e5:	01 cd                	add    %ecx,%ebp
+  e7:	0f b7 4a 06          	movzwl 0x6(%edx),%ecx
+  eb:	0f af d9             	imul   %ecx,%ebx
+  ee:	0f b7 48 08          	movzwl 0x8(%eax),%ecx
+  f2:	01 eb                	add    %ebp,%ebx
+  f4:	0f b7 6a 08          	movzwl 0x8(%edx),%ebp
+  f8:	0f af cd             	imul   %ebp,%ecx
+  fb:	0f b7 68 0a          	movzwl 0xa(%eax),%ebp
+  ff:	01 d9                	add    %ebx,%ecx
+ 101:	0f b7 5a 0a          	movzwl 0xa(%edx),%ebx
+ 105:	0f af eb             	imul   %ebx,%ebp
+ 108:	0f b7 58 0c          	movzwl 0xc(%eax),%ebx
+ 10c:	01 cd                	add    %ecx,%ebp
+ 10e:	0f b7 4a 0c          	movzwl 0xc(%edx),%ecx
+ 112:	0f af d9             	imul   %ecx,%ebx
+ 115:	0f b7 48 0e          	movzwl 0xe(%eax),%ecx
+ 119:	01 eb                	add    %ebp,%ebx
+ 11b:	0f b7 6a 0e          	movzwl 0xe(%edx),%ebp
+ 11f:	0f af cd             	imul   %ebp,%ecx
+ 122:	0f b7 68 10          	movzwl 0x10(%eax),%ebp
+ 126:	01 d9                	add    %ebx,%ecx
+ 128:	0f b7 5a 10          	movzwl 0x10(%edx),%ebx
+ 12c:	0f af eb             	imul   %ebx,%ebp
+ 12f:	0f b7 58 12          	movzwl 0x12(%eax),%ebx
+ 133:	01 cd                	add    %ecx,%ebp
+ 135:	0f b7 4a 12          	movzwl 0x12(%edx),%ecx
+ 139:	0f af d9             	imul   %ecx,%ebx
+ 13c:	0f b7 48 14          	movzwl 0x14(%eax),%ecx
+ 140:	01 eb                	add    %ebp,%ebx
+ 142:	0f b7 6a 14          	movzwl 0x14(%edx),%ebp
+ 146:	0f af cd             	imul   %ebp,%ecx
+ 149:	0f b7 68 16          	movzwl 0x16(%eax),%ebp
+ 14d:	01 d9                	add    %ebx,%ecx
+ 14f:	0f b7 5a 16          	movzwl 0x16(%edx),%ebx
+ 153:	0f af eb             	imul   %ebx,%ebp
+ 156:	0f b7 58 18          	movzwl 0x18(%eax),%ebx
+ 15a:	01 cd                	add    %ecx,%ebp
+ 15c:	0f b7 4a 18          	movzwl 0x18(%edx),%ecx
+ 160:	0f af d9             	imul   %ecx,%ebx
+ 163:	0f b7 48 1a          	movzwl 0x1a(%eax),%ecx
+ 167:	01 eb                	add    %ebp,%ebx
+ 169:	0f b7 6a 1a          	movzwl 0x1a(%edx),%ebp
+ 16d:	0f af cd             	imul   %ebp,%ecx
+ 170:	0f b7 68 1c          	movzwl 0x1c(%eax),%ebp
+ 174:	01 d9                	add    %ebx,%ecx
+ 176:	0f b7 5a 1c          	movzwl 0x1c(%edx),%ebx
+ 17a:	0f af eb             	imul   %ebx,%ebp
+ 17d:	0f b7 58 1e          	movzwl 0x1e(%eax),%ebx
+ 181:	01 cd                	add    %ecx,%ebp
+ 183:	0f b7 4a 1e          	movzwl 0x1e(%edx),%ecx
+ 187:	0f af d9             	imul   %ecx,%ebx
+ 18a:	01 eb                	add    %ebp,%ebx
+ 18c:	0f b7 6a 20          	movzwl 0x20(%edx),%ebp
+ 190:	0f b7 48 20          	movzwl 0x20(%eax),%ecx
+ 194:	0f af cd             	imul   %ebp,%ecx
+ 197:	0f b7 68 22          	movzwl 0x22(%eax),%ebp
+ 19b:	01 d9                	add    %ebx,%ecx
+ 19d:	0f b7 5a 22          	movzwl 0x22(%edx),%ebx
+ 1a1:	83 c0 30             	add    $0x30,%eax
+ 1a4:	0f af eb             	imul   %ebx,%ebp
+ 1a7:	0f b7 58 f4          	movzwl -0xc(%eax),%ebx
+ 1ab:	01 cd                	add    %ecx,%ebp
+ 1ad:	0f b7 4a 24          	movzwl 0x24(%edx),%ecx
+ 1b1:	0f af d9             	imul   %ecx,%ebx
+ 1b4:	0f b7 48 f6          	movzwl -0xa(%eax),%ecx
+ 1b8:	01 eb                	add    %ebp,%ebx
+ 1ba:	0f b7 6a 26          	movzwl 0x26(%edx),%ebp
+ 1be:	0f af cd             	imul   %ebp,%ecx
+ 1c1:	0f b7 68 f8          	movzwl -0x8(%eax),%ebp
+ 1c5:	01 d9                	add    %ebx,%ecx
+ 1c7:	0f b7 5a 28          	movzwl 0x28(%edx),%ebx
+ 1cb:	0f af eb             	imul   %ebx,%ebp
+ 1ce:	0f b7 58 fa          	movzwl -0x6(%eax),%ebx
+ 1d2:	01 cd                	add    %ecx,%ebp
+ 1d4:	0f b7 4a 2a          	movzwl 0x2a(%edx),%ecx
+ 1d8:	0f af d9             	imul   %ecx,%ebx
+ 1db:	0f b7 4a 2c          	movzwl 0x2c(%edx),%ecx
+ 1df:	01 eb                	add    %ebp,%ebx
+ 1e1:	0f b7 68 fc          	movzwl -0x4(%eax),%ebp
+ 1e5:	0f af cd             	imul   %ebp,%ecx
+ 1e8:	0f b7 68 fe          	movzwl -0x2(%eax),%ebp
+ 1ec:	01 d9                	add    %ebx,%ecx
+ 1ee:	0f b7 5a 2e          	movzwl 0x2e(%edx),%ebx
+ 1f2:	03 54 24 08          	add    0x8(%esp),%edx
+ 1f6:	0f af dd             	imul   %ebp,%ebx
+ 1f9:	01 d9                	add    %ebx,%ecx
+ 1fb:	01 ce                	add    %ecx,%esi
+ 1fd:	39 c7                	cmp    %eax,%edi
+ 1ff:	0f 85 bb fe ff ff    	jne    c0 <naive_conv+0xc0>
+ 205:	8b 54 24 14          	mov    0x14(%esp),%edx
+ 209:	8b 44 24 0c          	mov    0xc(%esp),%eax
+ 20d:	83 44 24 10 06       	addl   $0x6,0x10(%esp)
+ 212:	89 74 82 fc          	mov    %esi,-0x4(%edx,%eax,4)
+ 216:	3b 44 24 18          	cmp    0x18(%esp),%eax
+ 21a:	0f 85 88 fe ff ff    	jne    a8 <naive_conv+0xa8>
+ 220:	8b 54 24 28          	mov    0x28(%esp),%edx
+ 224:	83 44 24 1c 01       	addl   $0x1,0x1c(%esp)
+ 229:	01 54 24 14          	add    %edx,0x14(%esp)
+ 22d:	8b 44 24 1c          	mov    0x1c(%esp),%eax
+ 231:	8b 54 24 50          	mov    0x50(%esp),%edx
+ 235:	01 54 24 20          	add    %edx,0x20(%esp)
+ 239:	3b 44 24 18          	cmp    0x18(%esp),%eax
+ 23d:	0f 85 2d fe ff ff    	jne    70 <naive_conv+0x70>
+ 243:	83 c4 3c             	add    $0x3c,%esp
+ 246:	5b                   	pop    %ebx
+ 247:	5e                   	pop    %esi
+ 248:	5f                   	pop    %edi
+ 249:	5d                   	pop    %ebp
+ 24a:	c3                   	ret    
+ 24b:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 24f:	90                   	nop
+
+00000250 <convolution>:
+ 250:	f3 0f 1e fb          	endbr32 
+ 254:	e9 a7 fd ff ff       	jmp    0 <naive_conv>
+ 259:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+
+00000260 <naive_average_pooling>:
+ 260:	f3 0f 1e fb          	endbr32 
+ 264:	55                   	push   %ebp
+ 265:	57                   	push   %edi
+ 266:	56                   	push   %esi
+ 267:	53                   	push   %ebx
+ 268:	83 ec 14             	sub    $0x14,%esp
+ 26b:	8b 44 24 28          	mov    0x28(%esp),%eax
+ 26f:	89 c2                	mov    %eax,%edx
+ 271:	c1 ea 1f             	shr    $0x1f,%edx
+ 274:	01 c2                	add    %eax,%edx
+ 276:	d1 fa                	sar    %edx
+ 278:	89 14 24             	mov    %edx,(%esp)
+ 27b:	83 f8 01             	cmp    $0x1,%eax
+ 27e:	0f 8e f6 00 00 00    	jle    37a <naive_average_pooling+0x11a>
+ 284:	8d 04 40             	lea    (%eax,%eax,2),%eax
+ 287:	c7 44 24 08 00 00 00 	movl   $0x0,0x8(%esp)
+ 28e:	00 
+ 28f:	8b 6c 24 2c          	mov    0x2c(%esp),%ebp
+ 293:	01 c0                	add    %eax,%eax
+ 295:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+ 29c:	00 
+ 29d:	89 44 24 0c          	mov    %eax,0xc(%esp)
+ 2a1:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+ 2a8:	8b 44 24 08          	mov    0x8(%esp),%eax
+ 2ac:	8b 7c 24 30          	mov    0x30(%esp),%edi
+ 2b0:	8d 04 40             	lea    (%eax,%eax,2),%eax
+ 2b3:	8d 04 47             	lea    (%edi,%eax,2),%eax
+ 2b6:	8b 7c 24 0c          	mov    0xc(%esp),%edi
+ 2ba:	01 ef                	add    %ebp,%edi
+ 2bc:	89 7c 24 10          	mov    %edi,0x10(%esp)
+ 2c0:	89 fe                	mov    %edi,%esi
+ 2c2:	31 ff                	xor    %edi,%edi
+ 2c4:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 2c8:	31 d2                	xor    %edx,%edx
+ 2ca:	31 c9                	xor    %ecx,%ecx
+ 2cc:	31 db                	xor    %ebx,%ebx
+ 2ce:	83 c7 01             	add    $0x1,%edi
+ 2d1:	66 89 10             	mov    %dx,(%eax)
+ 2d4:	83 c5 0c             	add    $0xc,%ebp
+ 2d7:	83 c0 06             	add    $0x6,%eax
+ 2da:	83 c6 0c             	add    $0xc,%esi
+ 2dd:	66 89 48 fc          	mov    %cx,-0x4(%eax)
+ 2e1:	66 89 58 fe          	mov    %bx,-0x2(%eax)
+ 2e5:	0f b7 5d f4          	movzwl -0xc(%ebp),%ebx
+ 2e9:	66 89 58 fa          	mov    %bx,-0x6(%eax)
+ 2ed:	0f b7 4d f6          	movzwl -0xa(%ebp),%ecx
+ 2f1:	66 89 48 fc          	mov    %cx,-0x4(%eax)
+ 2f5:	0f b7 55 f8          	movzwl -0x8(%ebp),%edx
+ 2f9:	66 89 50 fe          	mov    %dx,-0x2(%eax)
+ 2fd:	66 03 5d fa          	add    -0x6(%ebp),%bx
+ 301:	66 89 58 fa          	mov    %bx,-0x6(%eax)
+ 305:	66 03 4d fc          	add    -0x4(%ebp),%cx
+ 309:	66 89 48 fc          	mov    %cx,-0x4(%eax)
+ 30d:	66 03 55 fe          	add    -0x2(%ebp),%dx
+ 311:	66 89 50 fe          	mov    %dx,-0x2(%eax)
+ 315:	66 03 5e f4          	add    -0xc(%esi),%bx
+ 319:	66 89 58 fa          	mov    %bx,-0x6(%eax)
+ 31d:	66 03 4e f6          	add    -0xa(%esi),%cx
+ 321:	66 89 48 fc          	mov    %cx,-0x4(%eax)
+ 325:	66 03 56 f8          	add    -0x8(%esi),%dx
+ 329:	66 89 50 fe          	mov    %dx,-0x2(%eax)
+ 32d:	66 03 4e fc          	add    -0x4(%esi),%cx
+ 331:	66 03 56 fe          	add    -0x2(%esi),%dx
+ 335:	66 03 5e fa          	add    -0x6(%esi),%bx
+ 339:	66 c1 e9 02          	shr    $0x2,%cx
+ 33d:	66 c1 eb 02          	shr    $0x2,%bx
+ 341:	66 c1 ea 02          	shr    $0x2,%dx
+ 345:	66 89 48 fc          	mov    %cx,-0x4(%eax)
+ 349:	66 89 58 fa          	mov    %bx,-0x6(%eax)
+ 34d:	66 89 50 fe          	mov    %dx,-0x2(%eax)
+ 351:	39 3c 24             	cmp    %edi,(%esp)
+ 354:	0f 8f 6e ff ff ff    	jg     2c8 <naive_average_pooling+0x68>
+ 35a:	83 44 24 04 01       	addl   $0x1,0x4(%esp)
+ 35f:	8b 34 24             	mov    (%esp),%esi
+ 362:	8b 44 24 04          	mov    0x4(%esp),%eax
+ 366:	8b 6c 24 10          	mov    0x10(%esp),%ebp
+ 36a:	01 74 24 08          	add    %esi,0x8(%esp)
+ 36e:	03 6c 24 0c          	add    0xc(%esp),%ebp
+ 372:	39 c6                	cmp    %eax,%esi
+ 374:	0f 8f 2e ff ff ff    	jg     2a8 <naive_average_pooling+0x48>
+ 37a:	83 c4 14             	add    $0x14,%esp
+ 37d:	5b                   	pop    %ebx
+ 37e:	5e                   	pop    %esi
+ 37f:	5f                   	pop    %edi
+ 380:	5d                   	pop    %ebp
+ 381:	c3                   	ret    
+ 382:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+ 389:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+
+00000390 <average_pooling>:
+ 390:	f3 0f 1e fb          	endbr32 
+ 394:	e9 c7 fe ff ff       	jmp    260 <naive_average_pooling>
+ 399:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+
+000003a0 <register_conv_functions>:
+ 3a0:	f3 0f 1e fb          	endbr32 
+ 3a4:	53                   	push   %ebx
+ 3a5:	e8 fc ff ff ff       	call   3a6 <register_conv_functions+0x6>
+ 3aa:	81 c3 02 00 00 00    	add    $0x2,%ebx
+ 3b0:	83 ec 10             	sub    $0x10,%esp
+ 3b3:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 3b9:	50                   	push   %eax
+ 3ba:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 3c0:	50                   	push   %eax
+ 3c1:	e8 fc ff ff ff       	call   3c2 <register_conv_functions+0x22>
+ 3c6:	58                   	pop    %eax
+ 3c7:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 3cd:	5a                   	pop    %edx
+ 3ce:	50                   	push   %eax
+ 3cf:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 3d5:	50                   	push   %eax
+ 3d6:	e8 fc ff ff ff       	call   3d7 <register_conv_functions+0x37>
+ 3db:	83 c4 18             	add    $0x18,%esp
+ 3de:	5b                   	pop    %ebx
+ 3df:	c3                   	ret    
+
+000003e0 <register_average_pooling_functions>:
+ 3e0:	f3 0f 1e fb          	endbr32 
+ 3e4:	53                   	push   %ebx
+ 3e5:	e8 fc ff ff ff       	call   3e6 <register_average_pooling_functions+0x6>
+ 3ea:	81 c3 02 00 00 00    	add    $0x2,%ebx
+ 3f0:	83 ec 10             	sub    $0x10,%esp
+ 3f3:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 3f9:	50                   	push   %eax
+ 3fa:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 400:	50                   	push   %eax
+ 401:	e8 fc ff ff ff       	call   402 <register_average_pooling_functions+0x22>
+ 406:	58                   	pop    %eax
+ 407:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 40d:	5a                   	pop    %edx
+ 40e:	50                   	push   %eax
+ 40f:	8d 83 00 00 00 00    	lea    0x0(%ebx),%eax
+ 415:	50                   	push   %eax
+ 416:	e8 fc ff ff ff       	call   417 <register_average_pooling_functions+0x37>
+ 41b:	83 c4 18             	add    $0x18,%esp
+ 41e:	5b                   	pop    %ebx
+ 41f:	c3                   	ret    
+
+Disassembly of section .text.__x86.get_pc_thunk.ax:
+
+00000000 <__x86.get_pc_thunk.ax>:
+   0:	8b 04 24             	mov    (%esp),%eax
+   3:	c3                   	ret    
+
+Disassembly of section .text.__x86.get_pc_thunk.bx:
+
+00000000 <__x86.get_pc_thunk.bx>:
+   0:	8b 1c 24             	mov    (%esp),%ebx
+   3:	c3                   	ret    
