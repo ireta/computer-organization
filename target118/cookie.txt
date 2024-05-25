@@ -1,0 +1,14 @@
+0x10ee1fdf
+
+cookie str: 31 30 65 65 31 66 64 66
+stack: 0x55656f10
+buffer size: a8, 168
+touch3: 0x4018f2
+hexmatch and checkrot buffer: 8c, 140 = 90, 144
+
+cookie short:
+31 00 30 00 65 00 65 00
+31 00 66 00 64 00 66 00
+
+00 31 00 30 00 65 00 65
+00 31 00 66 00 64 00 66
